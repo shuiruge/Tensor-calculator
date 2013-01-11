@@ -7,3 +7,6 @@ I used to calculate the tensors in Walker-Robertson metric in one sunny afternoo
 So, I made up my mind to do this.
 
 It's not over. But, since I still do not famillar with Mathematica, I take a lot of time to make it better.
+
+What a pity! If you want to download it, the usual way ("Save Link As") is impossible. There is something wrong with it.
+So, one way to download is that copy the code into a text editor and saveas "XXX.nb". And then run it in <i>Mathematica</i>.
