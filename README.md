@@ -1,12 +1,12 @@
 Tensor-calculator
 =================
 
-Here is a programme that can calculate the basic tensors in general relativity wirtten by Mathematica.
+Here is a programme that can calculate the basic tensors in general relativity wirtten by <i>Mathematica</i>.
 
 I used to calculate the tensors in Walker-Robertson metric in one sunny afternoon. It spent me 3 hours, but failed.
 So, I made up my mind to do this.
 
-It's not over. But, since I still do not famillar with Mathematica, I take a lot of time to make it better.
+It's not over. But, since I still do not famillar with <i>Mathematica</i>, I take a lot of time to make it better.
 
 <hr>
 
