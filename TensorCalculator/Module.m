@@ -1,14 +1,26 @@
 (* ::Package:: *)
 
+helpMeTensorCalculator = Print["'metricUpIndexModule[metric]' for\!\(\*FormBox[SuperscriptBox[\(g\), \(ab\)],
+TraditionalForm]\),where g is the metric;\n'gammaDownIndexModule[metric]' for\!\(\*FormBox[SubscriptBox[\(\[CapitalGamma]\), \(abc\)],
+TraditionalForm]\);\n'affineConnectionModule[metric]' for\!\(\*FormBox[SubscriptBox[SuperscriptBox[\(\[CapitalGamma]\), \(a\)], \(bc\)],
+TraditionalForm]\),i.e.,the affine connection;\n'rUpIndexModule[metric]' for\!\(\*FormBox[SubscriptBox[SuperscriptBox[\(R\), \(a\)], \(bcd\)],
+TraditionalForm]\);\n'rDownIndexModule[metric]' for\!\(\*FormBox[SubscriptBox[\(R\), \(abcd\)],
+TraditionalForm]\);\n'ricciTensorModule[metric]' for\!\(\*FormBox[SubscriptBox[\(R\), \(ab\)],
+TraditionalForm]\),i.e.,the Ricci tensor;\n'ricciScalarModule[metric]' for\!\(\*FormBox[\(R\),
+TraditionalForm]\),i.e.,the Ricci scalar;\n'einsteinTensorModule[metric]' for\!\(\*FormBox[SubscriptBox[\(G\), \(ab\)],
+TraditionalForm]\),i.e.,the Einstein tensor;\n'einsteinTensorUpIndexModule[metric]' for\!\(\*FormBox[SuperscriptBox[\(G\), \(ab\)],
+TraditionalForm]\)."];
+
+
 (* (g^ab): *)
 
-gMetricUpIndexModule[metric0_] := 
+metricUpIndexModule[metric0_] := 
   Module[{metric = metric0, 
-    gMetricUpIndex0  = Table[0, {i1, nDim}, {i2, nDim}]},
+    metricUpIndex0  = Table[0, {i1, nDim}, {i2, nDim}]},
    
-   gMetricUpIndex0 = Simplify[Inverse[metric]];
+   metricUpIndex0 = Simplify[Inverse[metric]];
    
-   gMetricUpIndex0
+   metricUpIndex0
    ];
 
 
@@ -24,8 +36,8 @@ gammaDownIndexModule[metric0_] :=
      		For[k = 1, k <= nDim, k++,
       			gammaDownIndex0[[i, j, k]] = 
        Simplify[
-        1/2*( D[metric[[i, k]], x[j]] + D[metric[[i, j]], x[k]] - 
-           D[metric[[j, k]], x[i]] ) ]
+        1/2*( D[metric[[i, k]], coordinates[[j]]] + D[metric[[i, j]], coordinates[[k]]] - 
+           D[metric[[j, k]], coordinates[[i]]] ) ]
       		]
      	]
     ]
@@ -41,8 +53,8 @@ affineConnectionModule[metric0_] :=
  Module[{metric = metric0, 
    affineConnection0 = Table[0, {i1, nDim}, {i2, nDim}, {i3, nDim}]},
   
-  gMetricUpIndex = gMetricUpIndexModule[metric]; (* 
-  Write it down here, for preventing that the gMetricUpIndexModule[
+  metricUpIndex = metricUpIndexModule[metric]; (* 
+  Write it down here, for preventing that the metricUpIndexModule[
   metric] "read" every time when preforming the 'For' circle! This is \
 just a skill! Note that, 
   the 'gMetricUpIndex' is no longer a local variable! *)
@@ -55,7 +67,7 @@ just a skill! Note that,
      		For[k = 1, k <= nDim, k++,
       			affineConnection0[[i, j, k]] = 
        Simplify[
-        Sum[gMetricUpIndex[[i, m]]*gammaDownIndex[[m, j, k]], {m, 1, 
+        Sum[metricUpIndex[[i, m]]*gammaDownIndex[[m, j, k]], {m, 1, 
           nDim}]]
       		]
      	]
@@ -66,7 +78,7 @@ just a skill! Note that,
   ]
 
 
-(* Subscript[(R^a), bcd]: *)
+(* Subscript[R^a, bcd]: *)
 
 rUpIndexModule[metric0_] := 
  Module[{metric = metric0, 
@@ -83,8 +95,8 @@ rUpIndexModule[metric0_] :=
        			
        rUpIndex0[[i, j, k, l]] = 
         Simplify[
-         D[affineConnection[[i, j, l]], x[k]] - 
-          D[affineConnection[[i, j, k]], x[l]] + 
+         D[affineConnection[[i, j, l]], coordinates[[k]]] - 
+          D[affineConnection[[i, j, k]], coordinates[[l]]] + 
           Sum[(affineConnection[[i, k, m]])*(affineConnection[[m, j, 
               l]]), {m, 1, nDim}] - 
           Sum[(affineConnection[[i, l, m]])*(affineConnection[[m, j, 
@@ -164,7 +176,7 @@ ricciScalarModule[metric0_] :=
   
   ricciScalar0 = 
    Simplify[
-    Sum[(gMetricUpIndex[[m, nDim]])*(ricciTensor[[m, nDim]]), {m, 1, 
+    Sum[(metricUpIndex[[m, nDim]])*(ricciTensor[[m, nDim]]), {m, 1, 
       nDim}, {nDim, 1, nDim}]];
   
   ricciScalar0
@@ -205,7 +217,7 @@ einsteinTensorUpIndexModule[metric0_] :=
     For[i = 1, i <= nDim, i++,
      For[j = 1, j <= nDim, j++,
       einsteinTensorUpIndex0[[i, j]] = 
-        Sum[gMetricUpIndex[[i, k]]*gMetricUpIndex[[j, l]]*
+        Sum[metricUpIndex[[i, k]]*metricUpIndex[[j, l]]*
           einsteinTensor[[k, l]], {k, 1, nDim}, {l, 1, nDim}];
       ]
      ]
