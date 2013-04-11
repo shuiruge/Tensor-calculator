@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     17701,        512]
-NotebookOptionsPosition[     16362,        458]
-NotebookOutlinePosition[     16694,        473]
-CellTagsIndexPosition[     16651,        470]
+NotebookDataLength[     17782,        511]
+NotebookOptionsPosition[     16451,        457]
+NotebookOutlinePosition[     16775,        472]
+CellTagsIndexPosition[     16732,        469]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -98,7 +98,7 @@ cycles such as Sum[XXXModule[metric]], which is slow and now is replaced by \
 Sum[XXX].\
 \>", "Text",
  CellChangeTimes->{{3.574660989498006*^9, 3.574661175272561*^9}}]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -215,16 +215,14 @@ Cell["Examples", "Section",
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
+Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"nDim", " ", "=", " ", "4"}], ";"}], " ", 
+  RowBox[{"dim", " ", "=", " ", "4"}], ";", " ", 
   RowBox[{"(*", " ", 
    RowBox[{
     RowBox[{"The", " ", "dimension", " ", "of", " ", "space"}], "-", 
     RowBox[{"time", " ", "under", " ", 
-     RowBox[{"consideration", "."}]}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
- RowBox[{
+     RowBox[{"consideration", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{"coordinates", " ", "=", " ", 
    RowBox[{"{", 
     RowBox[{"x", ",", "y", ",", "z", ",", "t"}], "}"}]}], ";", " ", 
@@ -274,12 +272,12 @@ Cell[BoxData[{
   RowBox[{"g", "//", "MatrixForm", " ", 
    RowBox[{"(*", " ", 
     RowBox[{"You", " ", 
-     RowBox[{"see", "."}]}], " ", "*)"}]}]}]}], "Input",
+     RowBox[{"see", "."}]}], " ", "*)"}]}]}]], "Input",
  CellChangeTimes->{{3.569756510161916*^9, 3.569756691868828*^9}, {
   3.56975924017519*^9, 3.5697592416101313`*^9}, {3.5698370851443663`*^9, 
   3.56983718134858*^9}, {3.5698380809439907`*^9, 3.5698381864238853`*^9}, {
   3.571651506032627*^9, 3.571651532636674*^9}, {3.5716516556227016`*^9, 
-  3.571651682640203*^9}}],
+  3.571651682640203*^9}, {3.5746614337433777`*^9, 3.574661433866157*^9}}],
 
 Cell[BoxData[
  TagBox[
@@ -323,7 +321,7 @@ Cell[BoxData[
    3.569834330133922*^9, 3.569834597999909*^9, 3.569834942117347*^9, {
    3.5698357127815933`*^9, 3.569835741703595*^9}, 3.5698394219671717`*^9, 
    3.569839614215654*^9, 3.5700965550082483`*^9, 3.571651495392617*^9, 
-   3.57165153834494*^9, 3.571651599756185*^9}]
+   3.57165153834494*^9, 3.571651599756185*^9, 3.57466143757596*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -370,7 +368,7 @@ for\\!\\(\\*FormBox[SubscriptBox[\\(G\\), \
 tensor;\\n'einsteinTensorUpIndexModule[metric]' \
 for\\!\\(\\*FormBox[SuperscriptBox[\\(G\\), \\(ab\\)],\\nTraditionalForm]\\).\
 \"\>"], "Print",
- CellChangeTimes->{3.571651602332033*^9}]
+ CellChangeTimes->{3.571651602332033*^9, 3.5746614429804163`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -386,7 +384,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.011997999999999953`", ",", 
+  RowBox[{"0.017996999999999985`", ",", 
    TagBox[
     RowBox[{"(", "\[NoBreak]", GridBox[{
        {
@@ -451,13 +449,14 @@ Cell[BoxData[
    3.569834595895873*^9, 3.569834699185214*^9, 3.569834932459942*^9, {
    3.569835702350559*^9, 3.569835760877224*^9}, {3.5698394261837463`*^9, 
    3.569839437182912*^9}, 3.569839620648993*^9, 3.570096555208033*^9, 
-   3.57165149906742*^9, 3.571651540942401*^9, 3.57165161022143*^9}]
+   3.57165149906742*^9, 3.571651540942401*^9, 3.57165161022143*^9, 
+   3.57466144493283*^9}]
 }, Open  ]]
 }, Closed]]
 }, Open  ]]
 },
 WindowSize->{1920, 1006},
-WindowMargins->{{-1, Automatic}, {19, -24}},
+WindowMargins->{{-2, 0}, {43, -48}},
 FrontEndVersion->"8.0 for Linux x86 (64-bit) (November 7, 2010)",
 StyleDefinitions->"Default.nb"
 ]
@@ -486,9 +485,9 @@ Cell[CellGroupData[{
 Cell[2138, 74, 95, 1, 42, "Section"],
 Cell[2236, 77, 716, 13, 68, "Text"],
 Cell[2955, 92, 404, 7, 49, "Text"]
-}, Open  ]],
+}, Closed]],
 Cell[CellGroupData[{
-Cell[3396, 104, 154, 2, 72, "Section"],
+Cell[3396, 104, 154, 2, 42, "Section"],
 Cell[CellGroupData[{
 Cell[3575, 110, 132, 3, 37, "Subsection"],
 Cell[3710, 115, 505, 13, 68, "Text"]
@@ -501,16 +500,16 @@ Cell[4432, 139, 2157, 67, 186, "Text"]
 Cell[CellGroupData[{
 Cell[6638, 212, 92, 1, 42, "Section"],
 Cell[CellGroupData[{
-Cell[6755, 217, 2458, 64, 150, "Input"],
-Cell[9216, 283, 1895, 42, 97, "Output"]
+Cell[6755, 217, 2477, 62, 150, "Input"],
+Cell[9235, 281, 1916, 42, 97, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11148, 330, 953, 18, 30, "Input"],
-Cell[12104, 350, 1268, 22, 176, "Print"]
+Cell[11188, 328, 953, 18, 30, "Input"],
+Cell[12144, 348, 1292, 22, 176, "Print"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13409, 377, 329, 7, 30, "Input"],
-Cell[13741, 386, 2581, 67, 101, "Output"]
+Cell[13473, 375, 329, 7, 30, "Input"],
+Cell[13805, 384, 2606, 68, 101, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]]
