@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     17261,        502]
-NotebookOptionsPosition[     15955,        449]
-NotebookOutlinePosition[     16291,        464]
-CellTagsIndexPosition[     16248,        461]
+NotebookDataLength[     17701,        512]
+NotebookOptionsPosition[     16362,        458]
+NotebookOutlinePosition[     16694,        473]
+CellTagsIndexPosition[     16651,        470]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -88,8 +88,17 @@ same status, as long as consisting with your signature and your metric input.\
    3.56983897572535*^9}, {3.5698390356594276`*^9, 3.5698390785318537`*^9}, 
    3.569839177698803*^9, {3.569839229033231*^9, 3.5698392462587833`*^9}, {
    3.569839277875803*^9, 3.5698393572023478`*^9}, 3.571651532742058*^9, {
-   3.5716517082578278`*^9, 3.5716517529298058`*^9}}]
-}, Closed]],
+   3.5716517082578278`*^9, 3.5716517529298058`*^9}}],
+
+Cell["\<\
+Note that, when you run function XXXModule[metric], a variable will be \
+generated, which is named by XXX (the XXX in the name of XXXModule[metric]) \
+and has the value of the XXXModule[metic]. This is generally used in some \
+cycles such as Sum[XXXModule[metric]], which is slow and now is replaced by \
+Sum[XXX].\
+\>", "Text",
+ CellChangeTimes->{{3.574660989498006*^9, 3.574661175272561*^9}}]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -448,7 +457,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{1920, 1006},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-1, Automatic}, {19, -24}},
 FrontEndVersion->"8.0 for Linux x86 (64-bit) (November 7, 2010)",
 StyleDefinitions->"Default.nb"
 ]
@@ -475,32 +484,33 @@ Cell[1445, 53, 656, 16, 68, "Text"]
 }, Closed]],
 Cell[CellGroupData[{
 Cell[2138, 74, 95, 1, 42, "Section"],
-Cell[2236, 77, 716, 13, 68, "Text"]
-}, Closed]],
-Cell[CellGroupData[{
-Cell[2989, 95, 154, 2, 42, "Section"],
-Cell[CellGroupData[{
-Cell[3168, 101, 132, 3, 37, "Subsection"],
-Cell[3303, 106, 505, 13, 68, "Text"]
+Cell[2236, 77, 716, 13, 68, "Text"],
+Cell[2955, 92, 404, 7, 49, "Text"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3845, 124, 177, 4, 37, "Subsection"],
-Cell[4025, 130, 2157, 67, 186, "Text"]
+Cell[3396, 104, 154, 2, 72, "Section"],
+Cell[CellGroupData[{
+Cell[3575, 110, 132, 3, 37, "Subsection"],
+Cell[3710, 115, 505, 13, 68, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4252, 133, 177, 4, 37, "Subsection"],
+Cell[4432, 139, 2157, 67, 186, "Text"]
 }, Open  ]]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[6231, 203, 92, 1, 42, "Section"],
+Cell[6638, 212, 92, 1, 42, "Section"],
 Cell[CellGroupData[{
-Cell[6348, 208, 2458, 64, 150, "Input"],
-Cell[8809, 274, 1895, 42, 97, "Output"]
+Cell[6755, 217, 2458, 64, 150, "Input"],
+Cell[9216, 283, 1895, 42, 97, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10741, 321, 953, 18, 30, "Input"],
-Cell[11697, 341, 1268, 22, 176, "Print"]
+Cell[11148, 330, 953, 18, 30, "Input"],
+Cell[12104, 350, 1268, 22, 176, "Print"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13002, 368, 329, 7, 30, "Input"],
-Cell[13334, 377, 2581, 67, 101, "Output"]
+Cell[13409, 377, 329, 7, 30, "Input"],
+Cell[13741, 386, 2581, 67, 101, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]]
