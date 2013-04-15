@@ -36,8 +36,8 @@ gammaDownIndexModule[metric0_] :=
      		For[k1 = 1, k1 <= dim, k1++,
       			gammaDownIndex0[[i1, j1, k1]] = 
        Simplify[
-        1/2*( D[metric[[i1, k1]], coordinates[[j1]]] + D[metric[[i1, j1]], coordinates[[k1]]] - 
-           D[metric[[j1, k1]], coordinates[[i1]]] ) ]
+        1/2*( D[metric[[i1, k1]], coordinates[[j1]]] + D[metric[[i1, j1]], coordinates[[k1]]] - D[metric[[j1, k1]], coordinates[[i1]]] )
+				]
       		]
      	]
     ]
@@ -67,8 +67,8 @@ just a skill! Note that,
      		For[k1 = 1, k1 <= dim, k1++,
       			affineConnection0[[i1, j1, k1]] = 
        Simplify[
-        Sum[metricUpIndex[[i1, m1]]*gammaDownIndex[[m1, j1, k1]], {m1, 1, 
-          dim}]]
+        Sum[metricUpIndex[[i1, m1]]*gammaDownIndex[[m1, j1, k1]], {m1, 1, dim}]
+				]
       		]
      	]
     ]
@@ -176,8 +176,8 @@ ricciScalarModule[metric0_] :=
   
   ricciScalar0 = 
    Simplify[
-    Sum[(metricUpIndex[[m1, dim]])*(ricciTensor[[m1, dim]]), {m1, 1, 
-      dim}, {dim, 1, dim}]];
+    Sum[(metricUpIndex[[i1, j1]])*(ricciTensor[[i1,j1]]), {i1, 1, 
+      dim}, {j1, 1, dim}]];
   ricciScalar = ricciScalar0;
   ricciScalar0
   ]
