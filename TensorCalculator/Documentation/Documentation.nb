@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[     20613,        601]
-NotebookOptionsPosition[     19116,        542]
-NotebookOutlinePosition[     19453,        557]
-CellTagsIndexPosition[     19410,        554]
+NotebookDataLength[     21224,        620]
+NotebookOptionsPosition[     19615,        557]
+NotebookOutlinePosition[     19952,        572]
+CellTagsIndexPosition[     19909,        569]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -44,7 +44,7 @@ folder",
  ", if you are using Linux.\n\nThat\[CloseCurlyQuote]s all!"
 }], "Text",
  CellChangeTimes->{{3.5698368185373993`*^9, 3.569836953625646*^9}}]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -98,7 +98,7 @@ cycles such as Sum[XXXModule[metric]], which is slow and now is replaced by \
 Sum[XXX].\
 \>", "Text",
  CellChangeTimes->{{3.574660989498006*^9, 3.574661175272561*^9}}]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -206,7 +206,7 @@ for ",
 }], "Text",
  CellChangeTimes->{{3.569837514072884*^9, 3.569837893523718*^9}}]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -537,11 +537,26 @@ Cell[BoxData[
    MatrixForm[BoxForm`e$]]]], "Output",
  CellChangeTimes->{3.57474295459247*^9}]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Remarks", "Section",
+ CellChangeTimes->{{3.575080862660659*^9, 3.5750808695964746`*^9}}],
+
+Cell["\<\
+All the indices used in the \[OpenCurlyDoubleQuote]For[]\
+\[CloseCurlyDoubleQuote] cycle are marked by \[OpenCurlyDoubleQuote]X0\
+\[CloseCurlyDoubleQuote], such as \[OpenCurlyDoubleQuote]i0\
+\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]j0\[CloseCurlyDoubleQuote],......\
+\>", "Text",
+ CellChangeTimes->{{3.575080875627738*^9, 3.575080951182612*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{821, 885},
-WindowMargins->{{335, Automatic}, {44, Automatic}},
+WindowMargins->{{334, Automatic}, {39, Automatic}},
 FrontEndVersion->"8.0 for Linux x86 (64-bit) (November 7, 2010)",
 StyleDefinitions->"Default.nb"
 ]
@@ -560,19 +575,19 @@ Cell[CellGroupData[{
 Cell[579, 22, 96, 1, 83, "Title"],
 Cell[CellGroupData[{
 Cell[700, 27, 99, 1, 72, "Section"],
-Cell[802, 30, 503, 15, 68, "Text"]
-}, Closed]],
+Cell[802, 30, 503, 15, 87, "Text"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[1342, 50, 100, 1, 42, "Section"],
+Cell[1342, 50, 100, 1, 72, "Section"],
 Cell[1445, 53, 656, 16, 87, "Text"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[2138, 74, 95, 1, 72, "Section"],
-Cell[2236, 77, 716, 13, 68, "Text"],
-Cell[2955, 92, 404, 7, 49, "Text"]
-}, Closed]],
+Cell[2236, 77, 716, 13, 106, "Text"],
+Cell[2955, 92, 404, 7, 87, "Text"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[3396, 104, 154, 2, 42, "Section"],
+Cell[3396, 104, 154, 2, 72, "Section"],
 Cell[CellGroupData[{
 Cell[3575, 110, 132, 3, 37, "Subsection"],
 Cell[3710, 115, 505, 13, 68, "Text"]
@@ -581,12 +596,12 @@ Cell[CellGroupData[{
 Cell[4252, 133, 177, 4, 37, "Subsection"],
 Cell[4432, 139, 2157, 67, 186, "Text"]
 }, Open  ]]
-}, Closed]],
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[6638, 212, 92, 1, 42, "Section"],
+Cell[6638, 212, 92, 1, 72, "Section"],
 Cell[CellGroupData[{
 Cell[6755, 217, 2568, 68, 188, "Input"],
-Cell[9326, 287, 1944, 43, 97, "Output"]
+Cell[9326, 287, 1944, 43, 84, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[11307, 335, 953, 18, 50, "Input"],
@@ -599,8 +614,12 @@ Cell[13948, 392, 2629, 68, 101, "Output"]
 Cell[16592, 463, 182, 4, 30, "Text"],
 Cell[CellGroupData[{
 Cell[16799, 471, 187, 3, 50, "Input"],
-Cell[16989, 476, 2087, 61, 114, "Output"]
+Cell[16989, 476, 2087, 61, 101, "Output"]
 }, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19125, 543, 94, 1, 72, "Section"],
+Cell[19222, 546, 365, 7, 30, "Text"]
 }, Open  ]]
 }, Open  ]]
 }

@@ -16,7 +16,7 @@ TraditionalForm]\)."];
 
 metricUpIndexModule[metric0_] := 
   Module[{metric = metric0, 
-    metricUpIndex0  = Table[0, {i1, dim}, {i2, dim}]},
+    metricUpIndex0  = Table[0, {i0, dim}, {i2, dim}]},
    
    metricUpIndex0 = Simplify[Inverse[metric]];
    metricUpIndex = metricUpIndex0;
@@ -28,15 +28,15 @@ metricUpIndexModule[metric0_] :=
 
 gammaDownIndexModule[metric0_] := 
  Module[{metric = metric0, 
-   gammaDownIndex0 = Table[0, {i1, dim}, {i2, dim}, {i3, dim}]},
+   gammaDownIndex0 = Table[0, {i0, dim}, {i2, dim}, {i3, dim}]},
   
-  Module[{i1, j1, k1, l1},
-   For[i1 = 1, i1 <= dim, i1++,
-    	For[j1 = 1, j1 <= dim, j1++,
-     		For[k1 = 1, k1 <= dim, k1++,
-      			gammaDownIndex0[[i1, j1, k1]] = 
+  Module[{i0, j0, k0, l0},
+   For[i0 = 1, i0 <= dim, i0++,
+    	For[j0 = 1, j0 <= dim, j0++,
+     		For[k0 = 1, k0 <= dim, k0++,
+      			gammaDownIndex0[[i0, j0, k0]] = 
        Simplify[
-        1/2*( D[metric[[i1, k1]], coordinates[[j1]]] + D[metric[[i1, j1]], coordinates[[k1]]] - D[metric[[j1, k1]], coordinates[[i1]]] )
+        1/2*( D[metric[[i0, k0]], coordinates[[j0]]] + D[metric[[i0, j0]], coordinates[[k0]]] - D[metric[[j0, k0]], coordinates[[i0]]] )
 				]
       		]
      	]
@@ -51,7 +51,7 @@ gammaDownIndexModule[metric0_] :=
 
 affineConnectionModule[metric0_] := 
  Module[{metric = metric0, 
-   affineConnection0 = Table[0, {i1, dim}, {i2, dim}, {i3, dim}]},
+   affineConnection0 = Table[0, {i0, dim}, {i2, dim}, {i3, dim}]},
   
   metricUpIndexModule[metric]; (* 
   Write it down here, hence we get the variable "metricUpIndex", for preventing that the metricUpIndexModule[
@@ -61,13 +61,13 @@ just a skill! Note that,
   
   gammaDownIndexModule[metric];
   
-  Module[{i1, j1, k1, l1},
-   For[i1 = 1, i1 <= dim, i1++,
-    	For[j1 = 1, j1 <= dim, j1++,
-     		For[k1 = 1, k1 <= dim, k1++,
-      			affineConnection0[[i1, j1, k1]] = 
+  Module[{i0, j0, k0, l0},
+   For[i0 = 1, i0 <= dim, i0++,
+    	For[j0 = 1, j0 <= dim, j0++,
+     		For[k0 = 1, k0 <= dim, k0++,
+      			affineConnection0[[i0, j0, k0]] = 
        Simplify[
-        Sum[metricUpIndex[[i1, m1]]*gammaDownIndex[[m1, j1, k1]], {m1, 1, dim}]
+        Sum[metricUpIndex[[i0, m0]]*gammaDownIndex[[m0, j0, k0]], {m0, 1, dim}]
 				]
       		]
      	]
@@ -83,24 +83,24 @@ just a skill! Note that,
 rUpIndexModule[metric0_] := 
  Module[{metric = metric0, 
    rUpIndex0 = 
-    Table[0, {i1, dim}, {i2, dim}, {i3, dim}, {i4, dim}]},
+    Table[0, {i0, dim}, {i2, dim}, {i3, dim}, {i4, dim}]},
   
   affineConnectionModule[metric];
   
-  Module[{i1, j1, k1, l1},
-   For[i1 = 1, i1 <= dim, i1++,
-    	For[j1 = 1, j1 <= dim, j1++,
-     		For[k1 = 1, k1 <= dim, k1++,
-      			For[l1 = 1, l1 <= dim, l1++,
+  Module[{i0, j0, k0, l0},
+   For[i0 = 1, i0 <= dim, i0++,
+    	For[j0 = 1, j0 <= dim, j0++,
+     		For[k0 = 1, k0 <= dim, k0++,
+      			For[l0 = 1, l0 <= dim, l0++,
        			
-       rUpIndex0[[i1, j1, k1, l1]] = 
+       rUpIndex0[[i0, j0, k0, l0]] = 
         Simplify[
-         D[affineConnection[[i1, j1, l1]], coordinates[[k1]]] - 
-          D[affineConnection[[i1, j1, k1]], coordinates[[l1]]] + 
-          Sum[(affineConnection[[i1, k1, m1]])*(affineConnection[[m1, j1, 
-              l1]]), {m1, 1, dim}] - 
-          Sum[(affineConnection[[i1, l1, m1]])*(affineConnection[[m1, j1, 
-              k1]]), {m1, 1, dim}]]
+         D[affineConnection[[i0, j0, l0]], coordinates[[k0]]] - 
+          D[affineConnection[[i0, j0, k0]], coordinates[[l0]]] + 
+          Sum[(affineConnection[[i0, k0, m0]])*(affineConnection[[m0, j0, 
+              l0]]), {m0, 1, dim}] - 
+          Sum[(affineConnection[[i0, l0, m0]])*(affineConnection[[m0, j0, 
+              k0]]), {m0, 1, dim}]]
        			]
       		]
      	]
@@ -117,19 +117,19 @@ a comment, if you will not use it at all!): *)
 rDownIndexModule[metric0_] := 
  Module[{metric = metric0, 
    rDownIndex0 = 
-    Table[0, {i1, dim}, {i2, dim}, {i3, dim}, {i4, dim}]},
+    Table[0, {i0, dim}, {i2, dim}, {i3, dim}, {i4, dim}]},
   
   rUpIndexModule[metric];
   
-  Module[{i1, j1, k1, l1},
-   For[i1 = 1, i1 <= dim, i1++,
-    	For[j1 = 1, j1 <= dim, j1++,
-     		For[k1 = 1, k1 <= dim, k1++,
-      			For[l1 = 1, l1 <= dim, l1++,
+  Module[{i0, j0, k0, l0},
+   For[i0 = 1, i0 <= dim, i0++,
+    	For[j0 = 1, j0 <= dim, j0++,
+     		For[k0 = 1, k0 <= dim, k0++,
+      			For[l0 = 1, l0 <= dim, l0++,
        				
-       rDownIndex0[[i1, j1, k1, l1]] = 
+       rDownIndex0[[i0, j0, k0, l0]] = 
         Simplify[
-         Sum[(metric[[i1, m1]])*(rUpIndex[[m1, j1, k1, l1]]), {m1, 1, 
+         Sum[(metric[[i0, m0]])*(rUpIndex[[m0, j0, k0, l0]]), {m0, 1, 
            dim}]]
        			]
       		]
@@ -145,18 +145,18 @@ rDownIndexModule[metric0_] :=
 
 ricciTensorModule[metric0_] := 
  Module[{metric = metric0, 
-   ricciTensor0 = Table[0, {i1, dim}, {i2, dim}]},
+   ricciTensor0 = Table[0, {i0, dim}, {i2, dim}]},
   
   rUpIndexModule[metric];
   
-  Module[{i1, j1, k1, l1},
-   For[i1 = 1, i1 <= dim, i1++,
-    	For[j1 = 1, j1 <= dim, j1++,
-     		ricciTensor0[[i1, j1]] = 
-      Simplify[Sum[rUpIndex[[m1, i1, m1, j1]], {m1, 1, dim}]]
+  Module[{i0, j0, k0, l0},
+   For[i0 = 1, i0 <= dim, i0++,
+    	For[j0 = 1, j0 <= dim, j0++,
+     		ricciTensor0[[i0, j0]] = 
+      Simplify[Sum[rUpIndex[[m0, i0, m0, j0]], {m0, 1, dim}]]
      		(* Or, you can write:
-     					For[k1=1,k1<=dim,k1++,
-     						ricciTensor[[i1,j1]]=ricciTensor[[i1,j1]]+rUpIndex[[k1,i1,k1,j1]]
+     					For[k0=1,k0<=dim,k0++,
+     						ricciTensor[[i0,j0]]=ricciTensor[[i0,j0]]+rUpIndex[[k0,i0,k0,j0]]
      					]
      		*)
      	]
@@ -176,8 +176,8 @@ ricciScalarModule[metric0_] :=
   
   ricciScalar0 = 
    Simplify[
-    Sum[(metricUpIndex[[i1, j1]])*(ricciTensor[[i1,j1]]), {i1, 1, 
-      dim}, {j1, 1, dim}]];
+    Sum[(metricUpIndex[[i0, j0]])*(ricciTensor[[i0,j0]]), {i0, 1, 
+      dim}, {j0, 1, dim}]];
   ricciScalar = ricciScalar0;
   ricciScalar0
   ]
@@ -187,16 +187,16 @@ ricciScalarModule[metric0_] :=
 
 einsteinTensorModule[metric0_] := 
  Module[{metric = metric0, 
-   einsteinTensor0 = Table[0, {i1, dim}, {i2, dim}]},
+   einsteinTensor0 = Table[0, {i0, dim}, {i2, dim}]},
   
   ricciScalarModule[metric];
   
-  Module[{i1, j1, k1, l1},
-   For[i1 = 1, i1 <= dim, i1++,
-    	For[j1 = 1, j1 <= dim, j1++,
-     		einsteinTensor0[[i1, j1]] = 
+  Module[{i0, j0, k0, l0},
+   For[i0 = 1, i0 <= dim, i0++,
+    	For[j0 = 1, j0 <= dim, j0++,
+     		einsteinTensor0[[i0, j0]] = 
       Simplify[
-       ricciTensor[[i1, j1]] - (1/2)*(ricciScalar)*(metric[[i1, j1]])]
+       ricciTensor[[i0, j0]] - (1/2)*(ricciScalar)*(metric[[i0, j0]])]
      	]
     ]
    ];
@@ -209,16 +209,16 @@ einsteinTensorModule[metric0_] :=
 
 einsteinTensorUpIndexModule[metric0_] := 
  Module[{metric = metric0, 
-   einsteinTensorUpIndex0 = Table[0, {i1, dim}, {i2, dim}]},
+   einsteinTensorUpIndex0 = Table[0, {i0, dim}, {i2, dim}]},
   
   einsteinTensorModule[metric];
   
-  Module[{i1, j1, k1, l1},
-    For[i1 = 1, i1 <= dim, i1++,
-     For[j1 = 1, j1 <= dim, j1++,
-      einsteinTensorUpIndex0[[i1, j1]] = 
-        Sum[metricUpIndex[[i1, k1]]*metricUpIndex[[j1, l1]]*
-          einsteinTensor[[k1, l1]], {k1, 1, dim}, {l1, 1, dim}];
+  Module[{i0, j0, k0, l0},
+    For[i0 = 1, i0 <= dim, i0++,
+     For[j0 = 1, j0 <= dim, j0++,
+      einsteinTensorUpIndex0[[i0, j0]] = 
+        Sum[metricUpIndex[[i0, k0]]*metricUpIndex[[j0, l0]]*
+          einsteinTensor[[k0, l0]], {k0, 1, dim}, {l0, 1, dim}];
       ]
      ]
     ];
