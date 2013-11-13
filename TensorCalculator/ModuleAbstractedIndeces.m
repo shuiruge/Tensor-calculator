@@ -13,7 +13,7 @@
 (*This is a hint that makes me think about this aspect. *)*)
 
 
-Get["Module_Matrix.m"];
+<<TensorCalculator`ModuleMatrix`;
 
 
 (* ::Input:: *)
@@ -25,6 +25,14 @@ metric[{{i1_,i2_},{}}] := metricMatrix[[i1,i2]];
 metric[{{},{i1_,i2_}}] := metricUpIndexMatrix[[i1,i2]];
 affineConnection[{{i1_,i2_,i3_},{}}] := gammaDownIndexMatrix[[i1,i2,i3]];
 affineConnection[{{i2_,i3_},{i1_}}] := affineConnectionMatrix[[i1,i2,i3]];
+
+ricci[{{i1_, i2_, i3_, i4_}, {}}] := rDownIndexMatrix[[i1, i2, i3, i4]];
+ricci[{{i2_, i3_, i4_}, {i1_}}] := rUpIndexMatrix[[i1, i2, i3, i4]];
+ricci[{{i1_, i2_}, {}}] := ricciTensor[[i1, i2]];
+ricci[{},{}] = ricciScalar;
+
+einsteinTensor[{{i1_,i2_},{}}] := einsteinTensorMatrix[[i1,i2]]
+einsteinTensor[{{},{i1_,i2_}}] := einsteinTensorUpIndexMatrix[[i1,i2]];
 (* To be continued. *)
 
 
@@ -45,4 +53,27 @@ CoD[A_, Indeces_, j3_] := Module[{LowerRank, UpperRank, CoVariantDerivate, Upper
 	LowerRank = Length[LowerIndeces];
 	CoVariantDerivate = Simplify[D[A[{LowerIndeces,UpperIndeces}], coordinates[[j3]]] + (1-KroneckerDelta[UpperRank,0])*Sum[Sum[affineConnection[{{i1,j3},{UpperIndeces[[j1]]}}]*A[{LowerIndeces, ReplacePart[UpperIndeces,j1->i1]}],{i1,1,dim}], {j1,1,UpperRank}] - (1-KroneckerDelta[LowerRank,0])*Sum[Sum[affineConnection[{{LowerIndeces[[j2]],j3},{i1}}]*A[{ReplacePart[LowerIndeces,j2->i1], UpperIndeces}],{i1,1,dim}], {j2,1,LowerRank}]];
 	Return[CoVariantDerivate];
+]
+
+
+(* ::Input:: *)
+(*(* Define the transformation from Abstracted-version to Matrix-verion: *)*)
+(*(* Denoted by "transform". *)*)
+
+
+transform[abstracted_, matrix_] := Module[{result},
+	
+	return[result];
+]
+
+
+(* ::Input:: *)
+(*(* Define contraction of indeces: *)*)
+(*(* Denoted by "contract". *)*)
+
+
+contract[A_, IndecesA_, B_, IndecesB_] := Module[{result, i1},
+	commonPart[IndecesA[[1]], IndecesB[[2]]];
+	commonPart[IndecesA[[2]], IndecesB[[1]]];
+	result = Table[A[IndecesA]*B[IndecesB], {}];
 ]

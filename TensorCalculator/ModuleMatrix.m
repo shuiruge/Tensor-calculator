@@ -14,13 +14,18 @@ TraditionalForm]\)."];
 *)
 
 
+(* Protect the "\[Epsilon]1", which, SPECIALLY, denotes the order of the perturbation. *)
+
+Protect[\[Epsilon]1];
+
+
 (* (g^ab): *)
 
 metricUpIndexMatrixModule[metricMatrix0_] := 
   Module[{metricMatrix = metricMatrix0, 
     metricUpIndexMatrix0  = Table[0, {i0, dim}, {i2, dim}]},
    
-   metricUpIndexMatrix0 = Simplify[Inverse[metricMatrix]];
+   metricUpIndexMatrix0 = Simplify[Normal[Series[Inverse[metricMatrix], {\[Epsilon]1, 0, order}]]];
    metricUpIndexMatrix = metricUpIndexMatrix0;
    metricUpIndexMatrix0
    ];
@@ -37,9 +42,9 @@ gammaDownIndexMatrixModule[metricMatrix0_] :=
     	For[j0 = 1, j0 <= dim, j0++,
      		For[k0 = 1, k0 <= dim, k0++,
       			gammaDownIndexMatrix0[[i0, j0, k0]] = 
-       Simplify[
+       Simplify[Normal[Series[
         1/2*( D[metricMatrix[[i0, k0]], coordinates[[j0]]] + D[metricMatrix[[i0, j0]], coordinates[[k0]]] - D[metricMatrix[[j0, k0]], coordinates[[i0]]] )
-				]
+				, {\[Epsilon]1, 0, order}]]]
       		]
      	]
     ]
@@ -68,9 +73,9 @@ just a skill! Note that,
     	For[j0 = 1, j0 <= dim, j0++,
      		For[k0 = 1, k0 <= dim, k0++,
       			affineConnectionMatrix0[[i0, j0, k0]] = 
-       Simplify[
+       Simplify[Normal[Series[
         Sum[metricUpIndexMatrix[[i0, m0]]*gammaDownIndexMatrix[[m0, j0, k0]], {m0, 1, dim}]
-				]
+				, {\[Epsilon]1, 0, order}]]]
       		]
      	]
     ]
@@ -96,14 +101,15 @@ rUpIndexMatrixModule[metricMatrix0_] :=
       			For[l0 = 1, l0 <= dim, l0++,
        			
        rUpIndexMatrix0[[i0, j0, k0, l0]] = 
-        Simplify[
+        Simplify[Normal[Series[
          D[affineConnectionMatrix[[i0, j0, l0]], coordinates[[k0]]] - 
           D[affineConnectionMatrix[[i0, j0, k0]], coordinates[[l0]]] + 
           Sum[(affineConnectionMatrix[[i0, k0, m0]])*(affineConnectionMatrix[[m0, j0, 
               l0]]), {m0, 1, dim}] - 
           Sum[(affineConnectionMatrix[[i0, l0, m0]])*(affineConnectionMatrix[[m0, j0, 
-              k0]]), {m0, 1, dim}]]
-       			]
+              k0]]), {m0, 1, dim}]
+       			, {\[Epsilon]1, 0, order}]]]
+				]
       		]
      	]
     ]
@@ -130,9 +136,10 @@ rDownIndexMatrixModule[metricMatrix0_] :=
       			For[l0 = 1, l0 <= dim, l0++,
        				
        rDownIndexMatrix0[[i0, j0, k0, l0]] = 
-        Simplify[
+        Simplify[Normal[Series[
          Sum[(metricMatrix[[i0, m0]])*(rUpIndexMatrix[[m0, j0, k0, l0]]), {m0, 1, 
-           dim}]]
+           dim}]
+		, {\[Epsilon]1, 0, order}]]]
        			]
       		]
      	]
@@ -155,7 +162,7 @@ ricciTensorMatrixModule[metricMatrix0_] :=
    For[i0 = 1, i0 <= dim, i0++,
     	For[j0 = 1, j0 <= dim, j0++,
      		ricciTensorMatrix0[[i0, j0]] = 
-      Simplify[Sum[rUpIndexMatrix[[m0, i0, m0, j0]], {m0, 1, dim}]]
+      Simplify[Normal[Series[Sum[rUpIndexMatrix[[m0, i0, m0, j0]], {m0, 1, dim}], {\[Epsilon]1, 0, order}]]]
      		(* Or, you can write:
      					For[k0=1,k0<=dim,k0++,
      						ricciTensor[[i0,j0]]=ricciTensor[[i0,j0]]+rUpIndex[[k0,i0,k0,j0]]
@@ -177,9 +184,9 @@ ricciScalarMatrixModule[metricMatrix0_] :=
   ricciTensorMatrixModule[metricMatrix];
   
   ricciScalarMatrix0 = 
-   Simplify[
+   Simplify[Normal[Series[
     Sum[(metricUpIndexMatrix[[i0, j0]])*(ricciTensorMatrix[[i0,j0]]), {i0, 1, 
-      dim}, {j0, 1, dim}]];
+      dim}, {j0, 1, dim}], {\[Epsilon]1, 0, order}]]];
   ricciScalarMatrix = ricciScalarMatrix0;
   ricciScalarMatrix0
   ]
@@ -197,8 +204,9 @@ einsteinTensorMatrixModule[metricMatrix0_] :=
    For[i0 = 1, i0 <= dim, i0++,
     	For[j0 = 1, j0 <= dim, j0++,
      		einsteinTensorMatrix0[[i0, j0]] = 
-      Simplify[
-       ricciTensorMatrix[[i0, j0]] - (1/2)*(ricciScalarMatrix)*(metricMatrix[[i0, j0]])]
+      Simplify[Normal[Series[
+       ricciTensorMatrix[[i0, j0]] - (1/2)*(ricciScalarMatrix)*(metricMatrix[[i0, j0]])
+		, {\[Epsilon]1, 0, order}]]]
      	]
     ]
    ];
@@ -219,8 +227,10 @@ einsteinTensorUpIndexMatrixModule[metricMatrix0_] :=
     For[i0 = 1, i0 <= dim, i0++,
      For[j0 = 1, j0 <= dim, j0++,
       einsteinTensorUpIndexMatrix0[[i0, j0]] = 
-        Sum[metricUpIndexMatrix[[i0, k0]]*metricUpIndexMatrix[[j0, l0]]*
-          einsteinTensorMatrix[[k0, l0]], {k0, 1, dim}, {l0, 1, dim}];
+        Simplify[Normal[Series[
+			Sum[metricUpIndexMatrix[[i0, k0]]*metricUpIndexMatrix[[j0, l0]]*
+          einsteinTensorMatrix[[k0, l0]], {k0, 1, dim}, {l0, 1, dim}]
+		, {\[Epsilon]1, 0, order}]]];
       ]
      ]
     ];
