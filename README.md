@@ -23,4 +23,4 @@ It can calculate, analytically:
 * Simple contraction;
 * And so on. To be continued!
 
-<i>For installation and usage as well as other details on this programme, see the documentation within the "TensorCalculator" directory.</i>
+<i>For installation and usage as well as other details on this programme, see the documentation within the "TensorCalculator" directory, especially those examples.</i>
