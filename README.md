@@ -12,11 +12,6 @@ It's not over. But, since I still do not famillar with <i>Mathematica</i>, I tak
 
 <hr>
 
-What a pity! If you want to download it, the usual way ("Save Link As") is impossible. There is something wrong with it.
-So, one way to download is to copy the code into a text editor and saveas "XXX.nb". And then run it in <i>Mathematica</i>.
-
-<hr>
-
 It can calculate, analytically:
 
 * Basic tensors used in G.R., thus other tensors based on them;
