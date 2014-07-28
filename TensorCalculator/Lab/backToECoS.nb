@@ -1,0 +1,635 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     19434,        626]
+NotebookOptionsPosition[     17563,        556]
+NotebookOutlinePosition[     17899,        571]
+CellTagsIndexPosition[     17856,        568]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Back to Einstein\[CloseCurlyQuote]s Convension on Summation\
+\>", "Title",
+ CellChangeTimes->{{3.615201101570809*^9, 3.61520113022376*^9}, {
+  3.615506434771691*^9, 3.615506438063548*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Principle", "Section",
+ CellChangeTimes->{{3.615201238200147*^9, 3.615201242077688*^9}}],
+
+Cell["Here we take the general assumption:", "Text",
+ CellChangeTimes->{{3.61520113378807*^9, 3.615201143746388*^9}}],
+
+Cell[TextData[StyleBox["The summation appears as long as there\
+\[CloseCurlyQuote]s doubled index.",
+ FontWeight->"Bold",
+ FontSlant->"Italic"]], "Text",
+ CellChangeTimes->{{3.615201153881552*^9, 3.615201188113144*^9}}],
+
+Cell["This is our first principle!", "Text",
+ CellChangeTimes->{{3.615201198663988*^9, 3.615201213816692*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Notes", "Subsection",
+ CellChangeTimes->{{3.615505792126148*^9, 3.615505792803269*^9}}],
+
+Cell["\<\
+We use the colours to denotes the indices caused by the indices of \
+coordinates.\
+\>", "Text",
+ CellChangeTimes->{{3.615506478663393*^9, 3.615506480205717*^9}, {
+  3.615506517661788*^9, 3.615506557776355*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Lab", "Section",
+ CellChangeTimes->{{3.615201222552089*^9, 3.615201226728668*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"colourOfDerivativeIndices", " ", "=", " ", "Red"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"colourOfIntrinsicIndices", " ", "=", " ", "Green"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.61550497635648*^9, 3.615505008760827*^9}, {
+  3.615505188513633*^9, 3.615505207071123*^9}, {3.615511796287354*^9, 
+  3.615511797937042*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"indicesColours", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "colourOfDerivativeIndices", ",", " ", "colourOfIntrinsicIndices"}], 
+    "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.615505133627283*^9, 3.6155051820804*^9}, {
+  3.615516478466489*^9, 3.615516483973215*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"level", "[", 
+    RowBox[{"expr_", ",", " ", 
+     RowBox[{"order_:", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", " ", "Infinity"}], "}"}]}]}], "]"}], " ", ":=", " ", 
+   
+   RowBox[{"Level", "[", 
+    RowBox[{
+     RowBox[{"FullForm", "@", "expr"}], ",", " ", "order"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"memberQ", "[", 
+    RowBox[{"expr_", ",", " ", "listOfForms_", ",", " ", 
+     RowBox[{"logic_:", "Or"}]}], "]"}], " ", ":=", "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Length", "@", "listOfForms"}], " ", "===", " ", "1"}], ",", 
+     "\[IndentingNewLine]", "\t", 
+     RowBox[{"MemberQ", "[", 
+      RowBox[{"expr", ",", " ", 
+       RowBox[{"listOfForms", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+     "\t", 
+     RowBox[{"logic", "[", 
+      RowBox[{
+       RowBox[{"MemberQ", "[", 
+        RowBox[{"expr", ",", " ", 
+         RowBox[{"listOfForms", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", " ", 
+       RowBox[{"memberQ", "[", 
+        RowBox[{"expr", ",", " ", 
+         RowBox[{"Drop", "[", 
+          RowBox[{"listOfForms", ",", " ", "1"}], "]"}], ",", " ", "logic"}], 
+        "]"}]}], "]"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"indicesQ", "[", "subscripts_", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", "\t", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"memberQ", "[", 
+       RowBox[{
+        RowBox[{"level", "[", "subscripts", "]"}], ",", " ", 
+        "indicesColours"}], "]"}], " ", "\[Equal]", " ", "True"}], ",", " ", 
+     "True", ",", " ", "False"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.615505215067394*^9, 3.615505263183827*^9}, {
+  3.615505304677908*^9, 3.61550539753909*^9}, {3.615505459876103*^9, 
+  3.615505580399502*^9}, {3.615506600856012*^9, 3.615506670943743*^9}, {
+  3.615506723710622*^9, 3.615506809524024*^9}, {3.61550684383816*^9, 
+  3.61550686168229*^9}, {3.61550689892858*^9, 3.615506911700938*^9}, {
+  3.615511690489049*^9, 3.615511712627164*^9}, {3.615516488096343*^9, 
+  3.615516493210246*^9}, {3.615516565365276*^9, 3.615516569971846*^9}, {
+  3.615516669635172*^9, 3.61551667236071*^9}, {3.615516797247238*^9, 
+  3.615516800397743*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"x", ",", "y"}], "]"}], ",", 
+   RowBox[{"{", "y", "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"g", " ", "=", " ", 
+  RowBox[{"%", "//", "FullForm"}]}]}], "Input",
+ CellChangeTimes->{{3.615200783850475*^9, 3.615200793244401*^9}, {
+  3.615201877366887*^9, 3.615201879045711*^9}, {3.615201955988851*^9, 
+  3.615201958104674*^9}, {3.615516803288898*^9, 3.615516804881798*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["f", 
+   TagBox[
+    RowBox[{"(", 
+     RowBox[{"0", ",", "1"}], ")"}],
+    Derivative],
+   MultilineFunction->None], "[", 
+  RowBox[{"x", ",", "y"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.61520079603811*^9, 3.61520126677262*^9, 3.615201436054249*^9, {
+   3.615201805038688*^9, 3.615201880539205*^9}, 3.615201958824767*^9, 
+   3.615202066376135*^9, 3.615504895607875*^9, 3.615516516275392*^9, 
+   3.615516805501705*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"Derivative", "[", 
+      RowBox[{"0", ",", "1"}], "]"}], "[", "f", "]"}], "[", 
+    RowBox[{"x", ",", "y"}], "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{
+  3.61520079603811*^9, 3.61520126677262*^9, 3.615201436054249*^9, {
+   3.615201805038688*^9, 3.615201880539205*^9}, 3.615201958824767*^9, 
+   3.615202066376135*^9, 3.615504895607875*^9, 3.615516516275392*^9, 
+   3.615516806362507*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Evaluate", "[", "g", "]"}], "/.", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Derivative", "[", "indices__", "]"}], "[", "f_", "]"}], "[", 
+     "coords__", "]"}], " ", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", "f", "}"}], ",", " ", 
+      RowBox[{"{", "indices", "}"}], ",", " ", 
+      RowBox[{"{", "coords", "}"}]}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.615201282288808*^9, 3.615201433190297*^9}, {
+  3.615201776996635*^9, 3.615201863725214*^9}, {3.61520196075839*^9, 
+  3.6152019888452*^9}, {3.615202342443937*^9, 3.615202377040548*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"List", "[", 
+    RowBox[{
+     RowBox[{"List", "[", "f", "]"}], ",", 
+     RowBox[{"List", "[", 
+      RowBox[{"0", ",", "1"}], "]"}], ",", 
+     RowBox[{"List", "[", 
+      RowBox[{"x", ",", "y"}], "]"}]}], "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{
+  3.615201439135985*^9, {3.615201800528706*^9, 3.615201886817727*^9}, {
+   3.615201961567926*^9, 3.615201993448996*^9}, 3.61520206953162*^9, {
+   3.615202361170354*^9, 3.615202378251528*^9}, 3.615504897833963*^9, 
+   3.615516518297596*^9, 3.615516808004532*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"g", "/.", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Derivative", "[", "indices__", "]"}], "[", "f_", "]"}], "[", 
+     "coords__", "]"}], " ", "\[Rule]", " ", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"f", ",", " ", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"List", "@", "indices"}], ",", "colourOfDerivativeIndices"}],
+         "]"}]}], "]"}], "[", "coords", "]"}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"h", " ", "=", " ", 
+  RowBox[{"Evaluate", "@", "%"}]}]}], "Input",
+ CellChangeTimes->{{3.615202008968687*^9, 3.615202049250539*^9}, {
+  3.615202832591158*^9, 3.615202849573741*^9}, {3.615505017235194*^9, 
+  3.615505020968556*^9}, {3.615516695430194*^9, 3.615516696583113*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{
+    RowBox[{"Subscript", "[", 
+     RowBox[{"f", ",", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"List", "[", 
+         RowBox[{"0", ",", "1"}], "]"}], ",", 
+        RowBox[{"RGBColor", "[", 
+         RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], "]"}], "[", 
+    RowBox[{"x", ",", "y"}], "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{
+  3.615202012705029*^9, {3.615202050203556*^9, 3.61520207106491*^9}, {
+   3.615202839549428*^9, 3.615202850368858*^9}, 3.615504900992393*^9, 
+   3.615516520216397*^9, {3.615516579563731*^9, 3.615516587464746*^9}, 
+   3.615516697729369*^9, 3.615516809581437*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["f", 
+   StyleBox[
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}],
+    StripOnInput->False,
+    LineColor->RGBColor[1, 0, 0],
+    FrontFaceColor->RGBColor[1, 0, 0],
+    BackFaceColor->RGBColor[1, 0, 0],
+    GraphicsColor->RGBColor[1, 0, 0],
+    FontColor->RGBColor[1, 0, 0]]], "[", 
+  RowBox[{"x", ",", "y"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.615202012705029*^9, {3.615202050203556*^9, 3.61520207106491*^9}, {
+   3.615202839549428*^9, 3.615202850368858*^9}, 3.615504900992393*^9, 
+   3.615516520216397*^9, {3.615516579563731*^9, 3.615516587464746*^9}, 
+   3.615516697729369*^9, 3.615516810434831*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"level", "@", 
+  RowBox[{"level", "@", "h"}]}]], "Input",
+ CellChangeTimes->{{3.61551670345114*^9, 3.615516707351385*^9}, {
+  3.615516845326204*^9, 3.615516846627991*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"x", ",", "y", ",", "x", ",", "y", ",", 
+   RowBox[{
+    SubscriptBox["f", 
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}],
+      StripOnInput->False,
+      LineColor->RGBColor[1, 0, 0],
+      FrontFaceColor->RGBColor[1, 0, 0],
+      BackFaceColor->RGBColor[1, 0, 0],
+      GraphicsColor->RGBColor[1, 0, 0],
+      FontColor->RGBColor[1, 0, 0]]], "[", 
+    RowBox[{"x", ",", "y"}], "]"}], ",", "x", ",", "y", ",", 
+   RowBox[{
+    SubscriptBox["f", 
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}],
+      StripOnInput->False,
+      LineColor->RGBColor[1, 0, 0],
+      FrontFaceColor->RGBColor[1, 0, 0],
+      BackFaceColor->RGBColor[1, 0, 0],
+      GraphicsColor->RGBColor[1, 0, 0],
+      FontColor->RGBColor[1, 0, 0]]], "[", 
+    RowBox[{"x", ",", "y"}], "]"}], ",", 
+   TagBox[
+    StyleBox[
+     RowBox[{
+      RowBox[{"Subscript", "[", 
+       RowBox[{"f", ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{
+          RowBox[{"List", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", 
+          RowBox[{"RGBColor", "[", 
+           RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], "]"}], "[", 
+      RowBox[{"x", ",", "y"}], "]"}],
+     ShowSpecialCharacters->False,
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    FullForm], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y", ",", 
+     RowBox[{
+      SubscriptBox["f", 
+       StyleBox[
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}],
+        StripOnInput->False,
+        LineColor->RGBColor[1, 0, 0],
+        FrontFaceColor->RGBColor[1, 0, 0],
+        BackFaceColor->RGBColor[1, 0, 0],
+        GraphicsColor->RGBColor[1, 0, 0],
+        FontColor->RGBColor[1, 0, 0]]], "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     TagBox[
+      StyleBox[
+       RowBox[{
+        RowBox[{"Subscript", "[", 
+         RowBox[{"f", ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"List", "[", 
+             RowBox[{"0", ",", "1"}], "]"}], ",", 
+            RowBox[{"RGBColor", "[", 
+             RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], "]"}], "[", 
+        
+        RowBox[{"x", ",", "y"}], "]"}],
+       ShowSpecialCharacters->False,
+       ShowStringCharacters->True,
+       NumberMarks->True],
+      FullForm]}], "}"}], ",", 
+   TagBox[
+    StyleBox[
+     RowBox[{"List", "[", 
+      RowBox[{"x", ",", "y", ",", 
+       RowBox[{
+        RowBox[{"Subscript", "[", 
+         RowBox[{"f", ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"List", "[", 
+             RowBox[{"0", ",", "1"}], "]"}], ",", 
+            RowBox[{"RGBColor", "[", 
+             RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], "]"}], "[", 
+        
+        RowBox[{"x", ",", "y"}], "]"}], ",", 
+       RowBox[{"FullForm", "[", 
+        RowBox[{
+         RowBox[{"Subscript", "[", 
+          RowBox[{"f", ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"List", "[", 
+              RowBox[{"0", ",", "1"}], "]"}], ",", 
+             RowBox[{"RGBColor", "[", 
+              RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], "]"}], "[", 
+         RowBox[{"x", ",", "y"}], "]"}], "]"}]}], "]"}],
+     ShowSpecialCharacters->False,
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    FullForm]}], "}"}]], "Output",
+ CellChangeTimes->{3.615516707907565*^9, 3.615516812836959*^9, 
+  3.61551684733642*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"indicesQ", "@", "h"}]], "Input",
+ CellChangeTimes->{{3.615516823011215*^9, 3.615516836528913*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.615516837102361*^9, 3.61551685356334*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"level", "@", "h"}]], "Input",
+ CellChangeTimes->{{3.61551686927822*^9, 3.615516871433943*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"x", ",", "y", ",", 
+   RowBox[{
+    SubscriptBox["f", 
+     StyleBox[
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}],
+      StripOnInput->False,
+      LineColor->RGBColor[1, 0, 0],
+      FrontFaceColor->RGBColor[1, 0, 0],
+      BackFaceColor->RGBColor[1, 0, 0],
+      GraphicsColor->RGBColor[1, 0, 0],
+      FontColor->RGBColor[1, 0, 0]]], "[", 
+    RowBox[{"x", ",", "y"}], "]"}], ",", 
+   TagBox[
+    StyleBox[
+     RowBox[{
+      RowBox[{"Subscript", "[", 
+       RowBox[{"f", ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{
+          RowBox[{"List", "[", 
+           RowBox[{"0", ",", "1"}], "]"}], ",", 
+          RowBox[{"RGBColor", "[", 
+           RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], "]"}], "[", 
+      RowBox[{"x", ",", "y"}], "]"}],
+     ShowSpecialCharacters->False,
+     ShowStringCharacters->True,
+     NumberMarks->True],
+    FullForm]}], "}"}]], "Output",
+ CellChangeTimes->{3.615516872072962*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Style", "[", 
+   RowBox[{
+    RowBox[{"List", "[", 
+     RowBox[{"0", ",", "1"}], "]"}], ",", 
+    RowBox[{"RGBColor", "[", 
+     RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}], "//", 
+  "indicesQ"}]], "Input",
+ CellChangeTimes->{{3.615516526291666*^9, 3.615516531081048*^9}, {
+  3.61551658290785*^9, 3.615516590164298*^9}, {3.615516646607212*^9, 
+  3.615516648525472*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.615516590631725*^9, 3.615516649605312*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\"\<a\>\"", "//", "FullForm"}]], "Input",
+ CellChangeTimes->{{3.615202432942644*^9, 3.615202458971307*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox["\"\<a\>\"",
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{{3.615202434420945*^9, 3.615202459526428*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"g", "/.", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Derivative", "[", "indices__", "]"}], "[", "f_", "]"}], "[", 
+     "coords__", "]"}], " ", "\[Rule]", " ", 
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"f", ",", " ", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<0,1\>\"", ",", "Red"}], "]"}]}], "]"}], "[", "coords", 
+     "]"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Evaluate", "@", "%"}]}], "Input",
+ CellChangeTimes->{{3.6152029143431*^9, 3.615202944236544*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{
+    RowBox[{"Subscript", "[", 
+     RowBox[{"f", ",", 
+      RowBox[{"Style", "[", 
+       RowBox[{"\"\<0,1\>\"", ",", 
+        RowBox[{"RGBColor", "[", 
+         RowBox[{"1", ",", "0", ",", "0"}], "]"}]}], "]"}]}], "]"}], "[", 
+    RowBox[{"x", ",", "y"}], "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{{3.61520292414109*^9, 3.615202944659426*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["f", 
+   StyleBox["\<\"0,1\"\>",
+    StripOnInput->False,
+    LineColor->RGBColor[1, 0, 0],
+    FrontFaceColor->RGBColor[1, 0, 0],
+    BackFaceColor->RGBColor[1, 0, 0],
+    GraphicsColor->RGBColor[1, 0, 0],
+    FontColor->RGBColor[1, 0, 0]]], "[", 
+  RowBox[{"x", ",", "y"}], "]"}]], "Output",
+ CellChangeTimes->{{3.61520292414109*^9, 3.615202944665261*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1024, 600},
+WindowMargins->{{0, Automatic}, {Automatic, -1}},
+FrontEndVersion->"8.0 for Linux x86 (32-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 198, 4, 83, "Title"],
+Cell[CellGroupData[{
+Cell[802, 30, 94, 1, 72, "Section"],
+Cell[899, 33, 117, 1, 30, "Text"],
+Cell[1019, 36, 219, 4, 30, "Text"],
+Cell[1241, 42, 110, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[1376, 47, 93, 1, 37, "Subsection"],
+Cell[1472, 50, 220, 5, 30, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1741, 61, 88, 1, 72, "Section"],
+Cell[1832, 64, 379, 9, 50, "Input"],
+Cell[2214, 75, 314, 8, 30, "Input"],
+Cell[2531, 85, 2376, 60, 167, "Input"],
+Cell[CellGroupData[{
+Cell[4932, 149, 458, 10, 50, "Input"],
+Cell[5393, 161, 464, 13, 30, "Output"],
+Cell[5860, 176, 555, 16, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6452, 197, 642, 16, 30, "Input"],
+Cell[7097, 215, 654, 18, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7788, 238, 787, 20, 69, "Input"],
+Cell[8578, 260, 761, 21, 43, "Output"],
+Cell[9342, 283, 655, 17, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10034, 305, 194, 4, 30, "Input"],
+Cell[10231, 311, 3471, 105, 90, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13739, 421, 122, 2, 30, "Input"],
+Cell[13864, 425, 97, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13998, 431, 118, 2, 30, "Input"],
+Cell[14119, 435, 987, 31, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15143, 471, 411, 11, 30, "Input"],
+Cell[15557, 484, 95, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15689, 490, 131, 2, 30, "Input"],
+Cell[15823, 494, 223, 7, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16083, 506, 550, 15, 50, "Input"],
+Cell[16636, 523, 487, 15, 30, "Output"],
+Cell[17126, 540, 397, 11, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
