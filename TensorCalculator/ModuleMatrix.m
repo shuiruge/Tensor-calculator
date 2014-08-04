@@ -13,72 +13,72 @@ Protect[\[Epsilon]1];
 
 (* (g^ab): *)
 
-metricUpIndexMatrixModule[metricMatrix0_, order_:0, simplifyQ:_simplifyOrNot] :=
+metricUpIndexMatrixModule[metricMatrix0_, order0_:order, simplifyQ:_simplifyOrNot] :=
 If[simplifyQ == True,
-	metricUpIndexMatrixModuleSimplify[metricMatrix0, order],
-	metricUpIndexMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	metricUpIndexMatrixModuleSimplify[metricMatrix0, order0],
+	metricUpIndexMatrixModuleWithoutSimplify[metricMatrix0, order0]]
 
 
 (* Subscript[\[CapitalGamma], abc]: *)
 
-gammaDownIndexMatrixModule[metricMatrix0_, order_:0, simplifyQ_:simplifyOrNot] :=
+gammaDownIndexMatrixModule[metricMatrix0_, order0_:order, simplifyQ_:simplifyOrNot] :=
 If[simplifyQ == True,
-	gammaDownIndexMatrixModuleSimplify[metricMatrix0, order],
-	gammaDownIndexMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	gammaDownIndexMatrixModuleSimplify[metricMatrix0, order0],
+	gammaDownIndexMatrixModuleWithoutSimplify[metricMatrix0, order0]]
 
 
 (* Subscript[\[CapitalGamma]^a, bc], i.e., affine connection: *)
 
-affineConnectionMatrixModule[metricMatrix0_, order_:0, simplifyQ_:simplifyOrNot] := 
+affineConnectionMatrixModule[metricMatrix0_, order0_:order, simplifyQ_:simplifyOrNot] := 
 If[simplifyQ == True,
-	affineConnectionMatrixModuleSimplify[metricMatrix0, order],
-	affineConnectionMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	affineConnectionMatrixModuleSimplify[metricMatrix0, order0],
+	affineConnectionMatrixModuleWithoutSimplify[metricMatrix0, order0]]
 
 
 (* Subscript[R^a, bcd]: *)
 
-rUpIndexMatrixModule[metricMatrix0_, order_:0, simplifyQ_:simplifyOrNot] := 
+rUpIndexMatrixModule[metricMatrix0_, order0_:order, simplifyQ_:simplifyOrNot] := 
 If[simplifyQ == True,
-	rUpIndexMatrixModuleSimplify[metricMatrix0, order],
-	rUpIndexMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	rUpIndexMatrixModuleSimplify[metricMatrix0, order0],
+	rUpIndexMatrixModuleWithoutSimplify[metricMatrix0, order0]]
 
 
 (* Subscript[R, abcd], if you use it. (Or, you can make it to be just \
 a comment, if you will not use it at all!): *)
 
-rDownIndexMatrixModule[metricMatrix0_, order_:0, simplifyQ_:simplifyOrNot] := 
+rDownIndexMatrixModule[metricMatrix0_, order0_:order, simplifyQ_:simplifyOrNot] := 
 If[simplifyQ == True,
-	rDownIndexMatrixModuleSimplify[metricMatrix0, order],
-	rDownIndexMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	rDownIndexMatrixModuleSimplify[metricMatrix0, order0],
+	rDownIndexMatrixModuleWithoutSimplify[metricMatrix0, order0]]
 
 
 (* Subscript[R, ab], i.e., Ricci tensor: *)
 
-ricciTensorMatrixModule[metricMatrix0_, order_:0, simplifyQ_:simplifyOrNot] := 
+ricciTensorMatrixModule[metricMatrix0_, order0_:order, simplifyQ_:simplifyOrNot] := 
 If[simplifyQ == True,
-	ricciTensorMatrixModuleSimplify[metricMatrix0, order],
-	ricciTensorMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	ricciTensorMatrixModuleSimplify[metricMatrix0, order0],
+	ricciTensorMatrixModuleWithoutSimplify[metricMatrix0, order0]]
 
 
 (* R, i.e., Ricci scalar: *)
 
-ricciScalarMatrixModule[metricMatrix0_, order_:0, simplifyQ_:simplifyOrNot] :=
+ricciScalarMatrixModule[metricMatrix0_, order0_:order, simplifyQ_:simplifyOrNot] :=
 If[simplifyQ == True,
-	ricciScalarMatrixModuleSimplify[metricMatrix0, order],
-	ricciScalarMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	ricciScalarMatrixModuleSimplify[metricMatrix0, order0],
+	ricciScalarMatrixModuleWithoutSimplify[metricMatrix0, order0]]
 
 
 (* Subscript[G, ab], i.e., Einstein tensor: *)
 
-einsteinTensorMatrixModule[metricMatrix0_, order_:0, simplifyQ_:simplifyOrNot] :=
+einsteinTensorMatrixModule[metricMatrix0_, order0_:order, simplifyQ_:simplifyOrNot] :=
 If[simplifyQ == True,
-	einsteinTensorMatrixModuleSimplify[metricMatrix0, order],
-	einsteinTensorMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	einsteinTensorMatrixModuleSimplify[metricMatrix0, order0],
+	einsteinTensorMatrixModuleWithoutSimplify[metricMatrix0, order0]]
 
 
 (* (G^ab): *)
 
-einsteinTensorUpIndexMatrixModule[metricMatrix0_, order_:0, simplifyQ_:simplifyOrNot] :=
+einsteinTensorUpIndexMatrixModule[metricMatrix0_, order0_:order, simplifyQ_:simplifyOrNot] :=
 If[simplifyQ == True,
-	einsteinTensorUpIndexMatrixModuleSimplify[metricMatrix0, order],
-	einsteinTensorUpIndexMatrixModuleWithoutSimplify[metricMatrix0, order]]
+	einsteinTensorUpIndexMatrixModuleSimplify[metricMatrix0, order0],
+	einsteinTensorUpIndexMatrixModuleWithoutSimplify[metricMatrix0, order0]]
