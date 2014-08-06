@@ -10,11 +10,28 @@
 (* "A" and "B" are the name ('Head', in Mathematica) of the functions; "IndecesA" and "IndecesB" are lists.
 	For detials, see the "Documentation.nb", section "Contraction" *)
 
-contract[A_, IndecesA_, B_, IndecesB_] := Module[{result, ContractedIndeces},
-	ContractedIndeces = contractedIndeces[IndecesA, IndecesB];
-	result = contractRecursion[A, IndecesA, B, IndecesB, ContractedIndeces];
+(* by the doc. of 'Unevaluated[]': *)
+SetAttributes[contract,HoldAll];
+
+contract[A_, B_] := Module[{result,headAndIndicesA,headAndIndicesB,ContractedIndeces},
+	headAndIndicesA = fetchHeadAndIndices[A];
+	headAndIndicesB = fetchHeadAndIndices[B];
+	ContractedIndeces = Evaluate@contractedIndeces[headAndIndicesA[[2]], headAndIndicesB[[2]]];
+	result = Evaluate@contractRecursion[headAndIndicesA[[1]], headAndIndicesA[[2]], headAndIndicesB[[1]], headAndIndicesB[[2]], ContractedIndeces];
 	Return@result;
 ]
+
+
+
+
+
+(* this function fectch out the head (name) and the indices of the tensor, with indices, inputted. *)
+(* by the doc. of 'Unevaluated[]': *)
+SetAttributes[fetchHeadAndIndices,HoldAll];
+fetchHeadAndIndices[tensor_] :=
+	Module[{result, head, indices},
+		result = ReplaceAll[Unevaluated[tensor], head_[indices_]->{head,indices}];
+		Return@result];
 
 
 (* Function used in "contract[]". *)
