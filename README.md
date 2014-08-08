@@ -21,3 +21,7 @@ It can calculate, analytically:
 * And so on. To be continued!
 
 <i>For installation and usage as well as other details on this programme, see the documentation within the "TensorCalculator" directory, especially those examples.</i>
+
+<hr>
+
+<fontcolor="red">But the function 'contract[tensorA, tensorB] cannot be used for composition, which, however, is basic property for any function.</font>
