@@ -5,10 +5,11 @@ Here is a programme that can calculate the basic tensors in general relativity w
 
 (This works well on <i>Mathematica</i> 8.0.)
 
-I used to calculate the tensors in Walker-Robertson metric in one sunny afternoon. It spent me 3 hours, but failed.
-So, I made up my mind to do this.
+I used to calculate the tensors in Walker-Robertson metric in one sunny afternoon. It spent me 3 hours, but failed. So, I made up my mind to do this.
 
 It's not over. But, since I still do not famillar with <i>Mathematica</i>, I take a lot of time to make it better.
+
+Generally, I can use other tools. But, my motivation is calculating <i>components</i> of tensors, as what I failed to do for WR metric, rather than constructing abstract tensors, on which many other tools have worked quite well.
 
 <hr>
 
