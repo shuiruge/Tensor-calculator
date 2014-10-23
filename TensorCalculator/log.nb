@@ -1,0 +1,138 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4783,        129]
+NotebookOptionsPosition[      3931,        101]
+NotebookOutlinePosition[      4433,        119]
+CellTagsIndexPosition[      4390,        116]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+\[OpenCurlyQuote]coD[]\[CloseCurlyQuote] shall keep the same form as \
+\[OpenCurlyQuote]D[]\[CloseCurlyQuote].\
+\>", "Item1Numbered",
+ CellChangeTimes->{{3.622936348030066*^9, 3.622936392842994*^9}, 
+   3.622936580364976*^9, {3.622937118002123*^9, 3.622937119044349*^9}}],
+
+Cell[TextData[StyleBox["It\[CloseCurlyQuote]s general to encounter the \
+coupling \[OpenCurlyQuote]coD[ctr[], coord]\[CloseCurlyQuote]. So \
+\[OpenCurlyQuote]coD[]\[CloseCurlyQuote] shall find out which indices in \
+\[OpenCurlyQuote]ctr[]\[CloseCurlyQuote] are survived (i.e., not puppet);",
+ FontVariations->{"StrikeThrough"->True}]], "Item1Numbered",
+ CellChangeTimes->{{3.622936405187098*^9, 3.62293655809723*^9}, {
+  3.622936640457239*^9, 3.622936641329697*^9}, {3.622937191136611*^9, 
+  3.622937199455607*^9}}],
+
+Cell[TextData[StyleBox["This case can easily happen everywhere, so function \
+for pick out survived indices shall be written.",
+ FontVariations->{"StrikeThrough"->True}]], "Item1Numbered",
+ CellChangeTimes->{{3.62293664179729*^9, 3.622936703843005*^9}}],
+
+Cell["\<\
+\[OpenCurlyQuote]ctr[]\[CloseCurlyQuote] shall support the contractions of \
+many tensors, rather than only two.\
+\>", "Item1Numbered",
+ CellChangeTimes->{{3.622936570905419*^9, 3.622936622618706*^9}, {
+  3.622936711698802*^9, 3.622936725993541*^9}, {3.622936758212388*^9, 
+  3.622936758228387*^9}, {3.622937202639245*^9, 3.622937202930118*^9}}],
+
+Cell["\<\
+This ends the game, since, if you write (\[OpenCurlyDoubleQuote]write\
+\[CloseCurlyDoubleQuote] only) tensors in the abstract way, only \
+\[OpenCurlyQuote]coD[]\[CloseCurlyQuote] and \[OpenCurlyQuote]ctr[]\
+\[CloseCurlyQuote] are used, nothing else! So, once themselves and the \
+compositions of them are defined, the game ends.\
+\>", "Item1Numbered",
+ CellChangeTimes->{{3.622936758802367*^9, 3.622936903803991*^9}, {
+  3.62293698809744*^9, 3.622936988121452*^9}, {3.622937207510592*^9, 
+  3.622937211378596*^9}}],
+
+Cell["\<\
+Generally, or at least for now, only plus, time, contraction, and \
+covariant-derivative of \[OpenCurlyQuote]atom\[CloseCurlyQuote] tensors can \
+appear inside of \[OpenCurlyQuote]coD[]\[CloseCurlyQuote].\
+\>", "Item1Numbered",
+ CellChangeTimes->{{3.622936989776809*^9, 3.622937099619246*^9}, {
+  3.622937215228674*^9, 3.622937215485805*^9}}],
+
+Cell["\<\
+\[OpenCurlyQuote]atom[]\[CloseCurlyQuote] shall also be written to terminates \
+recursions.\
+\>", "Item1Numbered",
+ CellChangeTimes->{{3.622937100521181*^9, 3.622937115336924*^9}, {
+  3.622937225058764*^9, 3.622937237391678*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Composition relations:", "Text",
+ CellChangeTimes->{{3.622943579315782*^9, 3.622943584509351*^9}}],
+
+Cell["\<\
+coD[ctr[A, BB], cod] \[LongRightArrow] ctr[coD[A, cod], BB] + ctr[A, coD[BB, \
+cod]]\
+\>", "Text",
+ CellChangeTimes->{{3.622943438468392*^9, 3.622943499759609*^9}, {
+  3.622943688911581*^9, 3.62294371244247*^9}}],
+
+Cell["\<\
+ctr[coD[AA, cod], BB] \[LongRightArrow] ctr[coD[AA, cod], BB]\
+\>", "Text",
+ CellChangeTimes->{{3.622943520813615*^9, 3.622943555182329*^9}, {
+  3.622943722081019*^9, 3.622943726097188*^9}}]
+}, Open  ]],
+
+Cell["\<\
+coD[A, cod] \[LongRightArrow] D[A, cod] - ctr[affineConnect[...], A] - ...\
+\>", "Text",
+ CellChangeTimes->{{3.622943603551713*^9, 3.622943685561974*^9}, {
+  3.622943718521285*^9, 3.622943767393403*^9}, {3.62294429527054*^9, 
+  3.622944297260572*^9}}]
+},
+WindowSize->{1024, 600},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+Magnification:>FEPrivate`If[
+  FEPrivate`Equal[FEPrivate`$VersionNumber, 6.], 1.25, 1.25 Inherited],
+FrontEndVersion->"8.0 for Linux x86 (32-bit) (November 7, 2010)",
+StyleDefinitions->FrontEnd`FileName[{"Article"}, "Preprint.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 281, 5, 29, "Item1Numbered"],
+Cell[841, 27, 515, 7, 50, "Item1Numbered"],
+Cell[1359, 36, 253, 3, 28, "Item1Numbered"],
+Cell[1615, 41, 355, 6, 29, "Item1Numbered"],
+Cell[1973, 49, 524, 9, 50, "Item1Numbered"],
+Cell[2500, 60, 352, 6, 50, "Item1Numbered"],
+Cell[2855, 68, 239, 5, 28, "Item1Numbered"],
+Cell[CellGroupData[{
+Cell[3119, 77, 104, 1, 36, "Text"],
+Cell[3226, 80, 222, 5, 35, "Text"],
+Cell[3451, 87, 200, 4, 35, "Text"]
+}, Open  ]],
+Cell[3666, 94, 261, 5, 35, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)

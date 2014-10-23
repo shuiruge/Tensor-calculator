@@ -1,0 +1,458 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     17222,        449]
+NotebookOptionsPosition[     16540,        425]
+NotebookOutlinePosition[     16997,        443]
+CellTagsIndexPosition[     16954,        440]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"coD", "[", 
+   RowBox[{"quantity_", ",", " ", "crd_"}], "]"}], " ", ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"tensorQ", "@", "quantity"}], " ", "\[Equal]", " ", "False"}], 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "if", " ", "it", " ", "is", " ", "a", " ", "simple", " ", "function"}], 
+     " ", "*)"}], ",", "\[IndentingNewLine]", "\t", 
+    RowBox[{"D", "[", 
+     RowBox[{"quantity", ",", " ", 
+      RowBox[{
+      "coordinates", "\[LeftDoubleBracket]", "crd", 
+       "\[RightDoubleBracket]"}]}], "]"}], ",", "\[IndentingNewLine]", "\t", 
+    RowBox[{"Which", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"atomTensorQ", "@", "quantity"}], " ", "\[Equal]", " ", 
+       "True"}], ",", " ", "\[IndentingNewLine]", "\t\t", 
+      RowBox[{"coDOnAtomTensor", "[", 
+       RowBox[{"quantity", ",", " ", "crd"}], "]"}], ",", 
+      "\[IndentingNewLine]", "\t\t", 
+      RowBox[{
+       RowBox[{"Head", "@", "quantity"}], " ", "===", " ", "Plus"}], ",", 
+      "\[IndentingNewLine]", "\t\t", 
+      RowBox[{"coDOnPlus", "[", 
+       RowBox[{"quantity", ",", " ", "crd"}], "]"}], ",", 
+      "\[IndentingNewLine]", "\t\t", 
+      RowBox[{
+       RowBox[{"Head", "@", "quantity"}], " ", "===", " ", "Times"}], ",", 
+      "\[IndentingNewLine]", "\t\t", 
+      RowBox[{"coDOnTimes", "[", 
+       RowBox[{"quantity", ",", " ", "crd"}], "]"}], ",", 
+      "\[IndentingNewLine]", "\t\t", 
+      RowBox[{
+       RowBox[{"Head", "@", "quantity"}], " ", "===", " ", "ctr"}], ",", 
+      "\[IndentingNewLine]", "\t\t", 
+      RowBox[{"coDOnCtr", "[", 
+       RowBox[{"quantity", ",", " ", "crd"}], "]"}]}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.622944179070737*^9, 3.62294427583405*^9}, {
+   3.622944340026193*^9, 3.622944382705236*^9}, 3.622944424366837*^9, {
+   3.622944462555868*^9, 3.622944462991494*^9}, {3.62294450168162*^9, 
+   3.622944809750962*^9}, {3.622947330500078*^9, 3.622947331219183*^9}, {
+   3.622957053577244*^9, 3.622957148534994*^9}, {3.622960560758943*^9, 
+   3.622960571043535*^9}, {3.622960708131459*^9, 3.622960746152307*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"variablesAsList", "[", "func_", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"first", ",", " ", "residual", ",", " ", 
+       RowBox[{"head", " ", "=", " ", 
+        RowBox[{"Head", "@", "func"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+     "\t", 
+     RowBox[{"(*", " ", 
+      RowBox[{"This", " ", "function", " ", "maps", " ", 
+       RowBox[{
+       "\"\<func[var1, var2, ...] \[LongRightArrow] {var1, var2, ...}\>\"", 
+        "."}]}], " ", "*)"}], "\[IndentingNewLine]", "\t", 
+     RowBox[{"func", "/.", 
+      RowBox[{
+       RowBox[{"head", "[", 
+        RowBox[{"first_", ",", " ", "residual__"}], "]"}], " ", "\[Rule]", 
+       " ", 
+       RowBox[{"{", 
+        RowBox[{"first", ",", " ", "residual"}], "}"}]}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"variablesAsListSaperated", "[", "func_", "]"}], " ", ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"first", ",", " ", "residual", ",", " ", 
+      RowBox[{"head", " ", "=", " ", 
+       RowBox[{"Head", "@", "func"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+    "\t", 
+    RowBox[{"(*", " ", 
+     RowBox[{"This", " ", "function", " ", "maps", " ", 
+      RowBox[{
+      "\"\<func[var1, var2, ...] \[LongRightArrow] {var1, {var2, ...}}\>\"", 
+       "."}]}], " ", "*)"}], "\[IndentingNewLine]", "\t", 
+    RowBox[{"func", "/.", 
+     RowBox[{
+      RowBox[{"head", "[", 
+       RowBox[{"first_", ",", " ", "residual__"}], "]"}], " ", "\[Rule]", " ", 
+      RowBox[{"{", 
+       RowBox[{"first", ",", " ", 
+        RowBox[{"List", "@", "residual"}]}], "}"}]}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.622945060860814*^9, 3.622945246496918*^9}, {
+  3.622945369553288*^9, 3.622945450886717*^9}, {3.622946591753511*^9, 
+  3.62294661106181*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "If", " ", "a", " ", "quantity", " ", "IS", " ", "a", " ", 
+     "\"\<tensor-type\>\"", " ", "one"}], ",", " ", 
+    RowBox[{"and", " ", "its", " ", "head", " ", "is", " ", 
+     RowBox[{"NOT", " ", "'"}], 
+     RowBox[{"Plus", "'"}]}], ",", " ", 
+    RowBox[{"'", 
+     RowBox[{"Times", "'"}]}], ",", " ", 
+    RowBox[{"'", 
+     RowBox[{"ctr", "'"}]}], ",", "\[IndentingNewLine]", "\t", "then", ",", 
+    " ", 
+    RowBox[{
+    "we", " ", "put", " ", "the", " ", "judgement", " ", "that", " ", "it", 
+     " ", "is", " ", "an", " ", "atom", " ", 
+     RowBox[{"tensor", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"atomTensorQ", "[", "tensor_", "]"}], " ", ":=", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"And", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Head", "@", "tensor"}], " ", "=!=", " ", "Plus"}], ",", 
+         " ", 
+         RowBox[{
+          RowBox[{"Head", "@", "tensor"}], " ", "=!=", " ", "Times"}], ",", 
+         " ", 
+         RowBox[{
+          RowBox[{"Head", "@", "tensor"}], " ", "=!=", " ", "ctr"}]}], "]"}], 
+       " ", "\[Equal]", " ", "True"}], ",", "\[IndentingNewLine]", "\t", 
+      "True", ",", "\[IndentingNewLine]", "\t", "False"}], "]"}]}], 
+   ";"}]}]], "Input",
+ CellChangeTimes->{{3.622947393506618*^9, 3.622947499288964*^9}, {
+  3.622948483824198*^9, 3.622948576101873*^9}, {3.622948643604182*^9, 
+  3.62294869405762*^9}, {3.622960772727096*^9, 3.622960833435547*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tensorQ", "[", "quantity_", "]"}], " ", ":=", " ", 
+  RowBox[{"Or", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"MemberQ", "[", 
+      RowBox[{
+       RowBox[{"Level", "[", 
+        RowBox[{"quantity", ",", " ", 
+         RowBox[{"+", "Infinity"}]}], "]"}], ",", " ", "lo"}], "]"}], " ", 
+     "\[Equal]", " ", "True"}], ",", " ", 
+    RowBox[{
+     RowBox[{"MemberQ", "[", 
+      RowBox[{
+       RowBox[{"Level", "[", 
+        RowBox[{"quantity", ",", " ", 
+         RowBox[{"+", "Infinity"}]}], "]"}], ",", " ", "up"}], "]"}], " ", 
+     "\[Equal]", " ", "True"}], ",", " ", 
+    RowBox[{
+     RowBox[{"MemberQ", "[", 
+      RowBox[{
+       RowBox[{"Level", "[", 
+        RowBox[{"quantity", ",", " ", 
+         RowBox[{"+", "Infinity"}]}], "]"}], ",", " ", "noIndex"}], "]"}], 
+     " ", "\[Equal]", " ", "True"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.622948696498384*^9, 3.622948792506226*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"coDOnAtomTensor", "[", 
+    RowBox[{"atomTensor_", ",", " ", "crd_"}], "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"A", " ", "=", " ", 
+        RowBox[{"Head", "@", "atomTensor"}]}], ",", " ", 
+       RowBox[{"indeces0", " ", "=", " ", 
+        RowBox[{"indeces", "[", "atomTensor", "]"}]}], ",", " ", 
+       RowBox[{"result", " ", "=", " ", 
+        RowBox[{"D", "[", 
+         RowBox[{"atomTensor", ",", " ", 
+          RowBox[{
+          "coordinates", "\[LeftDoubleBracket]", "crd", 
+           "\[RightDoubleBracket]"}]}], "]"}]}], ",", " ", "i1", ",", " ", 
+       "j1", ",", " ", "j2", ",", " ", "j3"}], "}"}], ",", 
+     "\[IndentingNewLine]", "\t", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"indeces0", " ", "=!=", " ", 
+         RowBox[{"{", "noIndex", "}"}]}], ",", "\[IndentingNewLine]", "\t\t", 
+        
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"i1", " ", "=", " ", "1"}], ",", " ", 
+          RowBox[{"i1", " ", "<=", " ", 
+           RowBox[{"Length", "[", "indeces0", "]"}]}], ",", " ", 
+          RowBox[{"i1", "++"}], ",", "\n", "\t\t\t\t", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"indeces0", "\[LeftDoubleBracket]", 
+               RowBox[{"i1", ",", "2"}], "\[RightDoubleBracket]"}], " ", "===",
+               " ", "lo"}], ",", "\n", "\t\t\t\t\t", 
+             RowBox[{"result", " ", "=", " ", 
+              RowBox[{"result", " ", "-", " ", 
+               RowBox[{"ctr", "[", 
+                RowBox[{
+                 RowBox[{"affineConnection", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"j2", ",", "up"}], "}"}], ",", " ", 
+                    RowBox[{
+                    "indeces0", "\[LeftDoubleBracket]", "i1", 
+                    "\[RightDoubleBracket]"}], ",", " ", 
+                    RowBox[{"{", 
+                    RowBox[{"j3", ",", "lo"}], "}"}]}], "}"}], "]"}], "*", 
+                 RowBox[{"A", "[", 
+                  RowBox[{"ReplacePart", "[", 
+                   RowBox[{"indeces0", ",", " ", 
+                    RowBox[{"i1", " ", "\[Rule]", " ", 
+                    RowBox[{"{", 
+                    RowBox[{"j2", ",", "lo"}], "}"}]}]}], "]"}], "]"}]}], 
+                "]"}]}]}]}], "\n", "\t\t\t", "]"}], ";", "\n", "\t\t\t\t", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"indeces0", "\[LeftDoubleBracket]", 
+               RowBox[{"i1", ",", "2"}], "\[RightDoubleBracket]"}], " ", "===",
+               " ", "up"}], ",", "\n", "\t\t\t\t\t", 
+             RowBox[{"result", " ", "=", " ", 
+              RowBox[{"result", " ", "+", " ", 
+               RowBox[{"ctr", "[", 
+                RowBox[{
+                 RowBox[{"affineConnection", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{
+                    "indeces0", "\[LeftDoubleBracket]", "i1", 
+                    "\[RightDoubleBracket]"}], ",", " ", 
+                    RowBox[{"{", 
+                    RowBox[{"j2", ",", "lo"}], "}"}], ",", " ", 
+                    RowBox[{"{", 
+                    RowBox[{"j3", ",", "lo"}], "}"}]}], "}"}], "]"}], "*", 
+                 RowBox[{"A", "[", 
+                  RowBox[{"ReplacePart", "[", 
+                   RowBox[{"indeces0", ",", " ", 
+                    RowBox[{"i1", " ", "\[Rule]", " ", 
+                    RowBox[{"{", 
+                    RowBox[{"j2", ",", "up"}], "}"}]}]}], "]"}], "]"}]}], 
+                "]"}]}]}]}], "]"}]}]}], "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "\t", 
+      RowBox[{"Return", "[", "result", "]"}]}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.622956699867078*^9, 3.622956791097147*^9}, {
+   3.622956863333593*^9, 3.622956901907079*^9}, {3.622956981037847*^9, 
+   3.622956983882478*^9}, {3.622957479532209*^9, 3.622957737871014*^9}, 
+   3.622960460615237*^9, {3.622960609123462*^9, 3.6229606609208*^9}, {
+   3.622960874171627*^9, 3.622960944234956*^9}, {3.622961230838477*^9, 
+   3.622961313723731*^9}, {3.622961415162625*^9, 3.622961417358433*^9}, {
+   3.622961486811436*^9, 3.622961489335315*^9}, {3.622961736421337*^9, 
+   3.622961767450133*^9}, 3.622961933135627*^9, {3.622962092065634*^9, 
+   3.622962100583425*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"indeces", "[", "atomTensor_", "]"}], " ", ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"result", ",", " ", "head", ",", " ", "indeces"}], "}"}], ",", 
+    "\[IndentingNewLine]", "\t", 
+    RowBox[{"result", " ", "=", " ", 
+     RowBox[{"atomTensor", "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"head_", "[", "indeces_", "]"}], " ", "\[Rule]", " ", 
+        "indeces"}], "}"}]}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.622961000548301*^9, 3.62296112684303*^9}, {
+  3.622961170367542*^9, 3.622961183146003*^9}, {3.622961217187488*^9, 
+  3.622961220596739*^9}, {3.622961946246005*^9, 3.622961949113837*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"coDOnPlus", "[", 
+    RowBox[{"tensor_", ",", " ", "crd_"}], "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"plusFactors", " ", "=", " ", 
+       RowBox[{"variablesAsListSaperated", "[", "tensor", "]"}]}], "}"}], ",",
+      "\[IndentingNewLine]", "\t\t", 
+     RowBox[{
+      RowBox[{"coD", "[", 
+       RowBox[{
+        RowBox[{
+        "plusFactors", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+         ",", " ", "crd"}], "]"}], " ", "+", " ", 
+      RowBox[{"coD", "[", 
+       RowBox[{"Apply", "[", 
+        RowBox[{"Plus", ",", " ", 
+         RowBox[{
+         "plusFactors", "\[LeftDoubleBracket]", "2", 
+          "\[RightDoubleBracket]"}]}], "]"}], "]"}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.622944427302858*^9, 3.622944483280155*^9}, {
+  3.622944767710872*^9, 3.622944767986059*^9}, {3.622944822158946*^9, 
+  3.622944852628128*^9}, {3.62294490040026*^9, 3.622945026191796*^9}, {
+  3.622945493132057*^9, 3.622945537683826*^9}, {3.622946558329659*^9, 
+  3.622946566142425*^9}, {3.622946622795484*^9, 3.622946629896268*^9}, {
+  3.622946711763544*^9, 3.622946741928776*^9}, {3.622946832003717*^9, 
+  3.622946976067937*^9}, {3.62294704400659*^9, 3.622947071983037*^9}, {
+  3.6229471275598*^9, 3.62294728322047*^9}, {3.622947324204316*^9, 
+  3.622947325185543*^9}, {3.622947516002543*^9, 3.622947527885745*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"coDOnTimes", "[", 
+    RowBox[{"tensor_", ",", " ", "crd_"}], "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"timesFactors", " ", "=", " ", 
+       RowBox[{"variablesAsListSaperated", "[", "tensor", "]"}]}], "}"}], ",",
+      "\[IndentingNewLine]", "\t\t", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"coD", "[", 
+        RowBox[{
+         RowBox[{
+         "timesFactors", "\[LeftDoubleBracket]", "1", 
+          "\[RightDoubleBracket]"}], ",", " ", "crd"}], "]"}], "*", 
+       RowBox[{"Apply", "[", 
+        RowBox[{"Times", ",", " ", 
+         RowBox[{
+         "timesFactors", "\[LeftDoubleBracket]", "2", 
+          "\[RightDoubleBracket]"}]}], "]"}]}], " ", "+", " ", 
+      RowBox[{
+       RowBox[{
+       "timesFactors", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+        "*", 
+       RowBox[{"coD", "[", 
+        RowBox[{"Apply", "[", 
+         RowBox[{"Times", ",", " ", 
+          RowBox[{
+          "timesFactors", "\[LeftDoubleBracket]", "2", 
+           "\[RightDoubleBracket]"}]}], "]"}], "]"}]}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.622947531148852*^9, 3.622947541154682*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"coDOnCtr", "[", 
+   RowBox[{"tensor_", ",", " ", "crd_"}], "]"}], " ", ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"ctrFactors", " ", "=", " ", 
+      RowBox[{"variablesAsListSaperated", "[", "tensor", "]"}]}], "}"}], ",", 
+    "\[IndentingNewLine]", "\t", 
+    RowBox[{
+     RowBox[{"ctr", "[", 
+      RowBox[{
+       RowBox[{"coD", "[", 
+        RowBox[{
+         RowBox[{
+         "ctrFactors", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+          ",", " ", "crd"}], "]"}], "*", 
+       RowBox[{"Apply", "[", 
+        RowBox[{"ctr", ",", " ", 
+         RowBox[{
+         "ctrFactors", "\[LeftDoubleBracket]", "2", 
+          "\[RightDoubleBracket]"}]}], "]"}]}], "]"}], " ", "+", " ", 
+     RowBox[{"ctr", "[", 
+      RowBox[{
+       RowBox[{
+       "ctrFactors", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+       "*", 
+       RowBox[{"coD", "[", 
+        RowBox[{"Apply", "[", 
+         RowBox[{"ctr", ",", " ", 
+          RowBox[{
+          "ctrFactors", "\[LeftDoubleBracket]", "2", 
+           "\[RightDoubleBracket]"}]}], "]"}], "]"}]}], "]"}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.622947550680804*^9, 3.62294758707119*^9}, {
+  3.622947624488483*^9, 3.622947624851028*^9}, {3.622948115806784*^9, 
+  3.622948123579154*^9}, {3.622948156413671*^9, 3.62294825188891*^9}}]
+},
+WindowSize->{1024, 600},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+ShowSelection->True,
+Magnification:>FEPrivate`If[
+  FEPrivate`Equal[FEPrivate`$VersionNumber, 6.], 1.25, 1.25 Inherited],
+FrontEndVersion->"8.0 for Linux x86 (32-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 2148, 49, 276, "Input"],
+Cell[2708, 71, 1934, 49, 225, "Input"],
+Cell[4645, 122, 1595, 41, 155, "Input"],
+Cell[6243, 165, 939, 26, 83, "Input"],
+Cell[7185, 193, 4505, 99, 413, "Input"],
+Cell[11693, 294, 717, 17, 84, "Input"],
+Cell[12413, 313, 1465, 33, 84, "Input"],
+Cell[13881, 348, 1245, 35, 107, "Input"],
+Cell[15129, 385, 1407, 38, 107, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
