@@ -1,6 +1,8 @@
 Tensor-calculator
 =================
 
+<b>I have gave up this ugly package, turning to xAct which is bloodily elegant. So, this package will not be updated then.</b>
+
 Here is a programme that can calculate the basic tensors in general relativity wirtten by <i>Mathematica</i>.
 
 (This works well on <i>Mathematica</i> 8.0.)
